@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{ super() }}
+<style>
+input.big {
+    font-size: 24px;
+    box-sizing: border-box;
+    width: 50%;
+    padding: 1%;
+    background: lightgrey;
+    border: 3px solid #555;
+    color: #fff;
+}
+
+input.big:hover{
+    background: lightblue;
+}
+
+input[type=file]{
+    background-color: lightgrey;
+    border: none;
+    color: white;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+input[type=file]:hover{
+    background: lightblue;
+}
+
+form.register{
+    font-size: 0.9em;
+}
+
+input.box {
+    margin:5px 0px 5px 0px;
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+
+<h2>{{ title }}</h2>
+<!--<form class="register" action="{{url_for('main')}}" method="get">-->
+    <!--<b>Notice:</b>&nbsp; If you don't have an account, please go to welcome page and sign up!-->
+    <!--<input type="submit" value="Welcome">-->
+<!--</form>-->
+
+<form id="testForm" action="{{url_for('test_file_upload')}}" method="post" enctype="multipart/form-data">
+    <fieldset>
+
+        <legend>Login and upload a photo:</legend>
+        
+        username:
+        <input class="box" type="text" name="userID" value="{{log_username if log_username != None}}" required><br>
+        password:
+        <input class="box" type="text" name="password" required><br>
+        Choose a photo to upload.
+        <input class="box" type="file" name="uploadedfile" value="Browse" required><br>
+        photo name:(optional)
+        <!--<input class="box" type="text" name="img_name"><br>-->
+        <!--location:(optional)-->
+        <!--<input class="box" type="text" name="location"><br>-->
+        <!--description:(optional)<br>-->
+        <!--<textarea class="box" name="description" style="width: 50%; height: 100px;"-->
+                  <!--placeholder="What were you thinking when you took this photo?"></textarea>-->
+        
+        <p id="login_error" class="errormsg">{{login_error_msg if login_error_msg != None}}</p>
+        <input type="submit" class="big" name="login" value="Send" style="float:left">
+        <input type="button" class="big" onclick="myFunction();" value="Reset" style="float:right">
+
+    </fieldset>
+</form>
+
+<script>
+    function myFunction(){
+    document.getElementById("testForm").reset();
+    }
+</script>
+{% endblock %}

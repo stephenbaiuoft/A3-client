@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+<style>
+input[type=submit].save {
+    font-size: 24px;
+    box-sizing: border-box;
+    width: 50%;
+    padding: 1%;
+    background: lightgrey;
+    border: 3px solid #555;
+    color: #fff;
+    }
+input[type=submit].save:hover{
+    background: lightblue;
+}
+
+input[type=file]{
+    background-color: lightgrey;
+    border: none;
+    color: white;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+input[type=file]:hover{
+    background: lightblue;
+}
+</style>
+{% endblock %}
+{% block content %}
+    <h2 class="grey">Upload a new photo.</h2>
+
+    <form action="{{url_for('file_uploaded', username=username)}}" method="post" enctype="multipart/form-data">
+        <input type="file" name="myFile" value="Browse" required><br>
+
+        <p class="display">Photo name: <span style="color:grey">(optional)</span><br>
+            <input type="text" name="img_name"><br></p>
+
+        <p class="display">Location: <span style="color:grey">(optional)</span><br>
+        <input type="text" name="location"><br></p>
+
+        <p class="display">Description: <span style="color:grey">(optional)</span><br>
+        <textarea name="description" style="width: 50%; height: 100px;"
+                  placeholder="What were you thinking when you took this photo?"></textarea></p>
+        <p class="errormsg">{{error_message if error_message != None}}</p>
+        <input type="submit" value="Save" class="save">
+    </form>
+
+
+{% endblock %}

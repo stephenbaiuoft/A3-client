@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+<style>
+body.frontcover {
+    /* note url always with respect to itself*/
+    background-image: url({{ url_for('static', filename='images/smiley.gif')}});
+    background-size: 47%;
+    background-repeat: repeat-y;        /*repeat-x, repeat-y*/
+    background-position: right;
+}
+</style>
+<body class="frontcover">
+
+{% endblock %}
+{% block content %}
+<h2 class="grey">Welcome! {% block image %} {% endblock %} </h2>
+<form action="{{url_for('user_login')}}" method="post">
+    <fieldset style="width:50%;">
+        <legend>Login:</legend>
+        username:<br>
+        <input type="text" name="usrn" value="{{log_username if log_username != None}}" required><br>
+        password:<br>
+        <input type="password" name="pwd" required><br>
+        <p id="login_error" class="errormsg">{{login_error_msg if login_error_msg != None}}</p>
+        <input type="submit" name="login" value="login">
+    </fieldset>
+</form>
+<br>
+<b>Don't have an account? Sign up here!</b>
+
+<form action="{{url_for('user_signup')}}" method="post">
+    <br>
+    <fieldset style="width:50%;">
+        <legend>Signup:</legend>
+        username:<br>
+        <input type="text" name="newusrn" value="{{sign_username if sign_username != None}}" required>6 to 20 characters<br>
+        password:<br>
+        <input type="password" name="newpwd" required>6 to 20 characters<br>
+        <p id="signup_response" class="errormsg">{{signup_error_msg if signup_error_msg != None}}</p>
+        <input type="submit" name="signup" value="signup">
+    </fieldset>
+</form>
+{% endblock %}
+</body>

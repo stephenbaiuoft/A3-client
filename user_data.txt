@@ -1,0 +1,9 @@
+#cloud-config
+
+runcmd:
+ - echo "running init script" > /home/ubuntu/test_init.txt
+ - sudo bash /home/ubuntu/Desktop/A2_web_development/run.sh
+
+output: { all : '| tee -a /var/log/cloud-init-output.log' }
+
+# TODO: 1. put s3.bucket in session 2. create s3 bucket get object function 3. study the order and use that url for request

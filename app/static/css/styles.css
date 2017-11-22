@@ -1,0 +1,28 @@
+body.frontcover {
+    /* note url always with respect to itself*/
+    background-image: url({{ url_for('static', filename='images/background.jpg')}});
+    background-size: cover;
+    background-repeat: repeat-y;        /*repeat-x, repeat-y*/
+}
+
+h1.front{
+    color: grey;
+}
+
+h2.grey{
+    text-decoration: underline;
+    font-size: 30px;
+    color: #29293d;
+    font-weight: bold;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+/*displaying p format*/
+p.display{
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 20px;
+}
+
+p.errormsg{
+    color: red;
+}

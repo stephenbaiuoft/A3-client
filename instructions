@@ -1,0 +1,36 @@
+All those instructions are tested to work on Ubuntu 16.04
+
+1.install python 3.5, mysql, mysql-workbench, imagemagick and wand on your machine
+$ sudo apt-get install python3-wand
+
+
+2.navigate into the project folder 'photo_browse', and create a virtual environment
+$ python3 -m venv venv
+(if there are exceptions)
+export LC_ALL="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+sudo dpkg-reconfigure locales
+
+3.activate the venv
+$ source venv/bin/activate
+
+4.install flask, wand(an ImageMagick binding for python), and mysql-connector-python, boto3, awscli
+$ venv/bin/pip3 install flask
+$ venv/bin/pip3 install wand
+$ venv/bin/pip3 install mysql-connector-python-rf --egg
+$ venv/bin/pip3 install boto3
+$ venv/bin/pip3 install awscli
+
+5.configure aws
+$ aws configure
+
+6.install gunicorn
+$ venv/bin/pip install gunicorn
+$ venv/bin/pip install gevent
+$ chmod +x ./run.sh
+
+7.
+$ sudo ./run.sh
+
+
+

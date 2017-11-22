@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <link rel="stylesheet" type="text/css" href={{url_for('static',filename="css/styles.css")}}>
+    {% block head %}
+    <style>
+        li.photo_list {
+            display: inline-block;
+            margin: 10px;
+            }
+        input.logout {
+            float:right;
+            }
+    </style>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+     {% endblock %}
+</head>
+
+<body>
+<h1 align="center" style="font-size:3em;font-family:Georgia,'Times New Roman',Times,serif;">{{title}} {% block image %} {% endblock %} </h1>
+    {% block content %}
+    {% endblock %}
+</body>
+
+
+</html>
